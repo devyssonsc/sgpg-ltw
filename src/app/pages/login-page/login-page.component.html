@@ -1,0 +1,25 @@
+<app-header></app-header>
+<section>
+    <div id="overlay"></div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+            <label for="login">Login:</label>
+            <input type="text" id="login" formControlName="inputLogin" class="form-control" required>
+            @if(loginForm.get('inputLogin')?.invalid && loginForm.get('inputLogin')?.touched){
+                <small>
+                    Login is required.
+                </small>
+            }
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="inputPassword" class="form-control" required>
+            @if(loginForm.get('inputPassword')?.invalid && loginForm.get('inputPassword')?.touched){
+                <small>
+                    Password is required.
+                </small>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
+    </form>
+</section>
