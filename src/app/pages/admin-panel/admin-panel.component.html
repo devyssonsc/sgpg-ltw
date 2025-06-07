@@ -1,0 +1,115 @@
+<app-header></app-header>
+<section>
+    <div id="overlay" (click)="closeModal()"></div>
+    <div class="modal-add-user">
+        <form>
+            <div class="choose-user-type">
+                <input type="radio" name="userType" id="radioCliente" (change)="toggleEmployeeView()" checked>
+                <label for="radioCliente">Cliente</label>
+                <input type="radio" name="userType" id="radioFuncionario" (change)="toggleEmployeeView()">
+                <label for="radioFuncionario">Funcionário</label>
+            </div>
+            @if(isEmployee){
+                <div class="form-group">
+                    <label for="selectRole">Cargo:</label>
+                    <select name="role" id="selectRole">
+                        <option value="operador">Operador</option>
+                        <option value="func-serv">Funcionário de serviço</option>
+                    </select>
+                </div>
+            }
+            <div class="form-group">
+                <label for="inName">Nome:</label>
+                <input type="text" class="form-control" id="inName">
+            </div>
+            <div class="form-group">
+                <label for="inLogin">Login:</label>
+                <input type="text" class="form-control" id="inLogin">
+            </div>
+            <div class="form-group">
+                <label for="inPassword">Password:</label>
+                <input type="text" class="form-control" id="inPassword">
+            </div>
+            <div class="form-group">
+                <label for="inConfirmPassword">Confirm Password:</label>
+                <input type="text" class="form-control" id="inConfirmPassword">
+            </div>
+            <button class="btn btn-success" (click)="registerUser()">Registar Utilizador</button>
+        </form>
+    </div>
+    <h3>Painel de controle do administrador</h3>
+    <div class="buttons">
+        <button class="btn" (click)="openModal()">Registar novo utilizador</button>
+    </div>
+    <table class="tabela-clientes">
+        <thead>
+            <tr>
+                <th>Clientes</th>
+                <th>Id Cartão</th>
+                <th>Pontos</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Maria da Silva</td>
+                <td>123456</td>
+                <td>350</td>
+                <td><i class="bi bi-pencil-fill"></i></td>
+            </tr>
+            <tr>
+                <td>João Pereira</td>
+                <td>789012</td>
+                <td>420</td>
+                <td><i class="bi bi-pencil-fill"></i></td>
+            </tr>
+            <tr>
+                <td>João Pereira</td>
+                <td>789012</td>
+                <td>420</td>
+                <td><i class="bi bi-pencil-fill"></i></td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tabela-funcionarios">
+        <thead>
+            <tr>
+                <th>Funcionários</th>
+                <th>Cargo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Maria da Silva</td>
+                <td>
+                    <select name="" id="">
+                        <option value="operador">Operador</option>
+                        <option value="func-serv">Funcionário de serviço</option>
+                    </select>
+                </td>
+                <td><i class="bi bi-pencil-fill"></i></td>
+            </tr>
+            <tr>
+                <td>João Pereira</td>
+                <td>
+                    <select name="" id="">
+                        <option value="operador">Operador</option>
+                        <option value="func-serv">Funcionário de serviço</option>
+                    </select>
+                </td>
+                <td><i class="bi bi-pencil-fill"></i></td>
+            </tr>
+            <tr>
+                <td>João Pereira</td>
+                <td>
+                    <select name="" id="">
+                        <option value="operador">Operador</option>
+                        <option value="func-serv">Funcionário de serviço</option>
+                    </select>
+                </td>
+                <td><i class="bi bi-pencil-fill"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

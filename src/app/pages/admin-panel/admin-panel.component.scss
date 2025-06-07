@@ -1,0 +1,201 @@
+section {
+    width: 100%;
+    padding: 4em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2em;
+    height: 92vh;
+
+    position: relative;
+
+    #overlay {
+        display: none;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        z-index: 1;
+    }
+
+    .modal-add-user {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px 28px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        z-index: 1001;
+        width: 320px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+
+            label {
+                font-weight: bold;
+                margin-bottom: 4px;
+                color: #222;
+            }
+
+            input[type="text"],
+            input[type="password"],
+            select {
+                border: 2px solid #1cc4cc;
+                border-radius: 12px;
+                padding: 10px 12px;
+                font-size: 14px;
+                outline: none;
+            }
+
+            .btn,
+            button {
+                background-color: #1cc4cc;
+                color: white;
+                font-weight: bold;
+                border: none;
+                padding: 12px;
+                border-radius: 12px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+
+                &:hover {
+                    background-color: #19b2b8;
+                }
+            }
+
+            .choose-user-type {
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                align-items: center;
+
+                input[type="radio"] {
+                    display: none;
+                }
+
+                label {
+                    flex: 1;
+                    padding: 8px 12px;
+                    border: 2px solid #1cc4cc;
+                    border-radius: 10px;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: background 0.3s ease, color 0.3s ease;
+                    font-weight: bold;
+                    color: #1cc4cc;
+                }
+
+                input[type="radio"]:checked+label {
+                    background-color: #1cc4cc;
+                    color: white;
+                }
+            }
+
+            select {
+                width: 100%;
+                appearance: none;
+                background-image: url('data:image/svg+xml;utf8,<svg fill="%231cc4cc" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                background-size: 16px;
+            }
+        }
+    }
+
+
+    h3 {
+        color: #35c7c3;
+        font-weight: bold;
+    }
+
+    .buttons {
+        width: 10%;
+
+        .btn {
+            width: 100%;
+            background-color: #35c7c3;
+            color: #fff;
+            border: none;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #35c7c3;
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px 8px;
+            border-bottom: 2px solid #35c7c3;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        i.bi-pencil-fill {
+            cursor: pointer;
+            color: #35c7c3;
+            transition: color 0.2s;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+
+    .tabela-clientes {
+
+        td:first-child,
+        th:first-child {
+            width: 60%;
+        }
+
+        td:last-child,
+        th:last-child {
+            text-align: center;
+            width: 40px;
+        }
+    }
+
+    .tabela-funcionarios {
+
+        td {
+            select {
+                background-color: #fff;
+                color: #35c7c3;
+                border: 1px solid #35c7c3;
+                border-radius: 5px;
+                width: 100%;
+            }
+
+            option {
+                color: #35c7c3;
+                border: none;
+                outline: none;
+            }
+        }
+
+        td:first-child,
+        th:first-child {
+            width: 80.5%;
+        }
+
+        td:last-child,
+        th:last-child {
+            text-align: center;
+            width: 40px;
+        }
+    }
+}
