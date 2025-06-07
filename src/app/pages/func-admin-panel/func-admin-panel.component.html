@@ -1,0 +1,14 @@
+<app-header></app-header>
+<section>
+    <h3>Painel do funcionário administrativo</h3>
+    <div class="buttons">
+        <button class="btn" (click)="viewRegisterLoyaltyProgram()" id="register-loyalty-program-button">Registar programa de<br>fidelidade</button>
+        <button class="btn" (click)="viewManageScheduledServices()" id="manage-scheduled-services-button">Gerir serviços<br>agendados</button>
+    </div>
+    @if(registerLoyaltyProgramVisible) {
+        <app-register-loyalty-program></app-register-loyalty-program>
+    }
+    @if(manageScheduledServicesVisible) {
+        <app-manage-scheduled-service></app-manage-scheduled-service>
+    }
+</section>

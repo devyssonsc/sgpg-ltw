@@ -1,0 +1,59 @@
+<div class="content">
+    <div id="overlay" (click)="closeAddPrizesModal()"></div>
+    <div class="modal-add-prizes">
+        <h4>Adicionar Prémio</h4>
+        <form class="form-add-prize" (ngSubmit)="addPrize()">
+            <div class="input-container">
+                <div class="form-group">
+                    <label for="nomePremio">Nome do prémio:</label>
+                    <input type="text" id="nomePremio" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="pontosPremio">Pontos necessários:</label>
+                    <input type="number" id="pontosPremio" class="form-control"/>
+                </div>
+            </div>
+            <button type="submit" class="btn-filled">Registar materiais</button>
+        </form>
+    </div>
+
+    <div class="programa-container">
+        <div class="form-group">
+            <label for="nomePrograma">Nome do programa:</label>
+            <input type="text" id="nomePrograma" />
+        </div>
+        <div class="form-group">
+            <label for="pontosPorEuro">Pontos por euro gasto:</label>
+            <input type="number" id="pontosPorEuro" />
+        </div>
+        <button class="btn btn-filled" id="btn-create-loyalty-program">Criar programa<br>de fidelidade</button>
+    </div>
+
+    <table class="tabela-premios">
+        <thead>
+            <tr>
+                <th>Prémios</th>
+                <th>Pts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Air Fryer</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>4× Pneu</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Troca de óleo</td>
+                <td>6</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-wrapper">
+        <button class="btn-adicionar" (click)="openAddPrizesModal()">Adicionar prémio</button>
+    </div>
+
+</div>

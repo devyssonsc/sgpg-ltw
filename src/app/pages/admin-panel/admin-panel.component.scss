@@ -144,6 +144,14 @@ section {
             font-weight: bold;
         }
 
+        
+
+        td:last-child,
+        th:last-child {
+            text-align: center;
+            width: 40px;
+        }
+
         i.bi-pencil-fill {
             cursor: pointer;
             color: #35c7c3;
@@ -160,12 +168,6 @@ section {
         td:first-child,
         th:first-child {
             width: 60%;
-        }
-
-        td:last-child,
-        th:last-child {
-            text-align: center;
-            width: 40px;
         }
     }
 
@@ -190,12 +192,6 @@ section {
         td:first-child,
         th:first-child {
             width: 80.5%;
-        }
-
-        td:last-child,
-        th:last-child {
-            text-align: center;
-            width: 40px;
         }
     }
 }

@@ -1,0 +1,95 @@
+<div class="servicos-agendados">
+    <div id="overlay" (click)="closeAssignEmployeeModal()"></div>
+    <div class="modal-assign-employee">
+        <h4>Funcionários de serviço</h4>
+        <form (ngSubmit)="assignEmployee()">
+            <div class="radio-container">
+                <label>
+                    Divaldo Dias
+                    <input type="radio" name="opcao" value="1" checked>
+                    <span class="radio-mark"></span>
+                </label>
+                <label>
+                    Divaldo Dias
+                    <input type="radio" name="opcao" value="2">
+                    <span class="radio-mark"></span>
+
+                </label>
+                <label>
+                    Divaldo Dias
+                    <input type="radio" name="opcao" value="3">
+                    <span class="radio-mark"></span>
+                </label>
+                <label>
+                    Divaldo Dias
+                    <input type="radio" name="opcao" value="3">
+                    <span class="radio-mark"></span>
+                </label>
+                <label>
+                    Divaldo Dias
+                    <input type="radio" name="opcao" value="3">
+                    <span class="radio-mark"></span>
+                </label>
+                <label>
+                    Divaldo Dias
+                    <input type="radio" name="opcao" value="3">
+                    <span class="radio-mark"></span>
+                </label>
+                <!-- Adicione mais opções conforme necessário -->
+            </div>
+            <button type="submit" class="btn-filled">Atribuir funcionário</button>
+        </form>
+    </div>
+    <div class="modal-register-materials">
+        <h4>Materiais</h4>
+        <form (ngSubmit)="registerMaterials()">
+            <div class="check-container">
+                <label>
+                    1L de Óleo
+                    <input type="checkbox" name="material" id="oil" value="oil">
+                </label>
+                <label>
+                    Líquido de travões
+                    <input type="checkbox" name="material" id="brake-fluid" value="brake-fluid">
+                </label>
+                <label>
+                    Travões
+                    <input type="checkbox" name="material" id="brakes" value="brakes">
+                </label>
+            </div>
+            <button type="submit" class="btn-filled">Registar materiais</button>
+        </form>
+    </div>
+    <h5>Serviços agendados:</h5>
+    <table class="tabela-servicos">
+        <thead>
+            <tr>
+                <th>Nome do cliente</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Divaldo Dias</td>
+                <td>
+                    <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
+                    <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Divaldo Dias</td>
+                <td>
+                    <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
+                    <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Divaldo Dias</td>
+                <td>
+                    <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
+                    <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
