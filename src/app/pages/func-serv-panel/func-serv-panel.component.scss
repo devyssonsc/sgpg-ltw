@@ -1,0 +1,60 @@
+section {
+    width: 100%;
+    padding: 4em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2em;
+    height: 92vh;
+
+    h3, h5 {
+        color: #35c7c3;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .scheduled-services{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h5{
+            align-self: flex-start;
+        }
+
+        .service{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: solid 2px #35c7c3;
+            padding: 5px;
+
+            span{
+                font-size: 1.2em;
+                color: #35c7c3;
+            }
+
+            .btn-filled{
+                padding: 2px 10px;
+                background-color: #35c7c3;
+                color: white;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #2a9a9a;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
