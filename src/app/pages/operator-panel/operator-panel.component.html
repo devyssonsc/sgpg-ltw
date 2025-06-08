@@ -1,0 +1,101 @@
+<app-header></app-header>
+<section>
+    <div id="overlay" (click)="closeAllModals()"></div>
+    <div class="modal-register-sale">
+        <form (ngSubmit)="addProduct()">
+            <div class="form-group">
+                <label for="select-product">Produto:</label>
+                <select id="select-product" class="form-control">
+                    <option value="product1">Produto 1</option>
+                    <option value="product2">Produto 2</option>
+                    <option value="product3">Produto 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" class="form-control" min="1" value="1">
+            </div>
+            <button type="submit" class="btn-filled">Adicionar</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Qtd.</th>
+                    <th>Preço Uni.</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Produto 1</td>
+                    <td>2</td>
+                    <td>10.00€</td>
+                    <td>20.00€</td>
+                </tr>
+                <tr>
+                    <td>Produto 2</td>
+                    <td>1</td>
+                    <td>15.00€</td>
+                    <td>15.00€</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-filled" (click)="registerSale()">Registar venda</button>
+    </div>
+    <div class="modal-redeem-prize">
+        <form (ngSubmit)="redeemPrize()">
+            <div class="form-group">
+                <label for="customer">Cliente:</label>
+                <input type="text" id="costumer" class="form-control" required>
+                <small>Saldo do cliente: <span>12 pts</span></small>
+            </div>
+            <div class="form-group">
+                <label for="prize">Prémio:</label>
+                <select id="prize" class="form-control">
+                    <option value="prize1">Prémio 1 (7 pts)</option>
+                    <option value="prize2">Prémio 2 (12 pts)</option>
+                    <option value="prize3">Prémio 3 (14 pts)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-filled">Resgatar</button>
+        </form>
+    </div>
+    <div class="modal-register-stock-entry">
+        <form (ngSubmit)="registerStockEntry()">
+            <div class="form-group">
+                <label for="product">Produto:</label>
+                <select id="product" class="form-control">
+                    <option value="product1">Produto 1</option>
+                    <option value="product2">Produto 2</option>
+                    <option value="product3">Produto 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity-stock">Quantidade:</label>
+                <input type="number" id="quantity-stock" class="form-control" min="1" value="1">
+            </div>
+            <button type="submit" class="btn-filled">Registar entrada</button>
+        </form>
+    </div>
+    <div class="modal-assign-card">
+        <form (ngSubmit)="assignCard()">
+            <div class="form-group">
+                <label for="customer-card">Cliente:</label>
+                <input type="text" id="customer-card" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Número do cartão:</label>
+                <input type="text" id="card-number" class="form-control" required>
+            </div>
+            <button type="submit" class="btn-filled">Atribuir cartão</button>
+        </form>
+    </div>
+    <h3>Painel do operador</h3>
+    <div class="buttons">
+        <button class="btn" (click)="openRegisterSaleModal()" id="btn-register-sale">Registar uma venda</button>
+        <button class="btn" (click)="openRedeemPrizeModal()" id="btn-redeem-prize">Resgatar prémio</button>
+        <button class="btn" (click)="openRegisterStockEntryModal()" id="btn-register-stock-entry">Registar entrada no stock</button>
+        <button class="btn" (click)="openAssignCardModal()" id="btn-assign-card">Atribuir cartão a um cliente</button>
+    </div>
+</section>
