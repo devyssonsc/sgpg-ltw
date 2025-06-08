@@ -5,6 +5,7 @@ import { FuncAdminPanelComponent } from './pages/func-admin-panel/func-admin-pan
 import { FuncServPanelComponent } from './pages/func-serv-panel/func-serv-panel.component';
 import { CostumerPanelComponent } from './pages/costumer-panel/costumer-panel.component';
 import { OperatorPanelComponent } from './pages/operator-panel/operator-panel.component';
+import { ManagerPanelComponent } from './pages/manager-panel/manager-panel.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: "operator-panel",
         component: OperatorPanelComponent
+    },
+    {
+        path: "manager-panel",
+        component: ManagerPanelComponent
     }
 ];
