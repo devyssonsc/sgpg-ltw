@@ -1,0 +1,79 @@
+<app-header></app-header>
+<section>
+    <div id="overlay" (click)="closeScheduleServiceModal()"></div>
+    <div class="modal-schedule-service">
+        <form (ngSubmit)="scheduleService()">
+            <select>
+                <option value="">Selecione uma opção</option>
+                <option value="opcao1">Opção 1</option>
+                <option value="opcao2">Opção 2</option>
+            </select>
+
+            <input type="date" />
+
+            <input type="time" />
+
+            <button type="submit">Agendar Serviço</button>
+        </form>
+    </div>
+    <h3>Olá, Divaldo Dias</h3>
+    <div class="buttons">
+        <button class="btn" (click)="openScheduleServiceModal()">Agendar um serviço</button>
+    </div>
+    <table class="tabela-servicos">
+        <thead>
+            <tr>
+                <th>Serviços agendados</th>
+                <th></th>
+                <th></th>
+                <th>Funcionário</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Divaldo Dias</td>
+                <td>2023-10-01</td>
+                <td>10:00</td>
+                <td>Alykhan Jamal</td>
+                <button class="btn btn-info">Não Iniciado</button>
+            </tr>
+            <tr>
+                <td>Divaldo Dias</td>
+                <td>2023-10-02</td>
+                <td>11:00</td>
+                <td>Alykhan Jamal</td>
+                <button class="btn btn-success">Em execução</button>
+            </tr>
+            <tr>
+                <td>Divaldo Dias</td>
+                <td>2023-10-03</td>
+                <td>12:00</td>
+                <td>Alykhan Jamal</td>
+                <button class="btn btn-danger">Finalizado</button>
+            </tr>
+        </tbody>
+    </table>
+    <table class="tabela-movimentos-cartao">
+        <thead>
+            <tr>
+                <th>Movimentos do cartão fidelidade</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Acumulou 3 pontos</td>
+                <td>05/06/2025</td>
+            </tr>
+            <tr>
+                <td>Acumulou 10 pontos</td>
+                <td>02/06/2025</td>
+            </tr>
+            <tr>
+                <td>Acumulou 3 pontos</td>
+                <td>05/06/2025</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
