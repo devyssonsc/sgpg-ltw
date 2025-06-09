@@ -15,7 +15,7 @@ section {
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.8);
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
 
@@ -48,6 +48,7 @@ section {
 
             input[type="text"],
             input[type="password"],
+            input[type="email"],
             select {
                 border: 2px solid #1cc4cc;
                 border-radius: 12px;
@@ -69,34 +70,6 @@ section {
 
                 &:hover {
                     background-color: #19b2b8;
-                }
-            }
-
-            .choose-user-type {
-                display: flex;
-                justify-content: space-between;
-                gap: 12px;
-                align-items: center;
-
-                input[type="radio"] {
-                    display: none;
-                }
-
-                label {
-                    flex: 1;
-                    padding: 8px 12px;
-                    border: 2px solid #1cc4cc;
-                    border-radius: 10px;
-                    text-align: center;
-                    cursor: pointer;
-                    transition: background 0.3s ease, color 0.3s ease;
-                    font-weight: bold;
-                    color: #1cc4cc;
-                }
-
-                input[type="radio"]:checked+label {
-                    background-color: #1cc4cc;
-                    color: white;
                 }
             }
 
@@ -132,6 +105,7 @@ section {
         width: 100%;
         border-collapse: collapse;
         color: #35c7c3;
+        overflow-y: auto;
 
         th,
         td {

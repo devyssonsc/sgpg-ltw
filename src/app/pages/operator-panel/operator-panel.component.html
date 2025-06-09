@@ -1,19 +1,28 @@
 <app-header></app-header>
+<app-logout></app-logout>
 <section>
     <div id="overlay" (click)="closeAllModals()"></div>
     <div class="modal-register-sale">
-        <form (ngSubmit)="addProduct()">
+        <form [formGroup]="registerSaleForm" (ngSubmit)="addProduct()">
+            <div class="form-group">
+                <label for="cliente">Cliente:</label>
+                <select id="cliente" class="form-control" formControlName="inputSelectedCliente" required>
+                    @for(cliente of costumers; track cliente) {
+                        <option [value]="cliente.id">{{ cliente.name }}</option>
+                    }
+                </select>
+            </div>
             <div class="form-group">
                 <label for="select-product">Produto:</label>
-                <select id="select-product" class="form-control">
-                    <option value="product1">Produto 1</option>
-                    <option value="product2">Produto 2</option>
-                    <option value="product3">Produto 3</option>
+                <select id="select-product" class="form-control" formControlName="inputSelectedProduct" required>
+                    @for(produto of produtosDisponiveis; track produto) {
+                        <option [value]="produto.id">{{ produto.nome }}</option>
+                    }
                 </select>
             </div>
             <div class="form-group">
                 <label for="quantity">Quantidade:</label>
-                <input type="number" id="quantity" class="form-control" min="1" value="1">
+                <input type="number" id="quantity" class="form-control" formControlName="inputSelectedQuantity" min="1" value="1">
             </div>
             <button type="submit" class="btn-filled">Adicionar</button>
         </form>
@@ -27,18 +36,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Produto 1</td>
-                    <td>2</td>
-                    <td>10.00€</td>
-                    <td>20.00€</td>
-                </tr>
-                <tr>
-                    <td>Produto 2</td>
-                    <td>1</td>
-                    <td>15.00€</td>
-                    <td>15.00€</td>
-                </tr>
+                @for(produto of produtosAdicionados; track produto) {
+                    <tr>
+                        <td>{{ produto.nome }}</td>
+                        <td>{{ produto.quantidade }}</td>
+                        <td>{{ produto.precoUnitario}} Euros</td>
+                        <td>{{ produto.quantidade * produto.precoUnitario}} Euros</td>
+                    </tr>
+                }
             </tbody>
         </table>
         <button class="btn-filled" (click)="registerSale()">Registar venda</button>
@@ -62,33 +67,20 @@
         </form>
     </div>
     <div class="modal-register-stock-entry">
-        <form (ngSubmit)="registerStockEntry()">
+        <form [formGroup]="registerStockEntryForm" (ngSubmit)="registerStockEntry()">
             <div class="form-group">
                 <label for="product">Produto:</label>
-                <select id="product" class="form-control">
-                    <option value="product1">Produto 1</option>
-                    <option value="product2">Produto 2</option>
-                    <option value="product3">Produto 3</option>
-                </select>
+                <input type="text" id="product" class="form-control" formControlName="inputProduct" required>
             </div>
             <div class="form-group">
                 <label for="quantity-stock">Quantidade:</label>
-                <input type="number" id="quantity-stock" class="form-control" min="1" value="1">
+                <input type="number" id="quantity-stock" class="form-control" formControlName="inputQuantity" min="1" value="1">
+            </div>
+            <div class="form-group">
+                <label for="unit-price">Preço unitário:</label>
+                <input type="number" id="unit-price" class="form-control" formControlName="inputUnityPrice" min="1" value="1">
             </div>
             <button type="submit" class="btn-filled">Registar entrada</button>
-        </form>
-    </div>
-    <div class="modal-assign-card">
-        <form (ngSubmit)="assignCard()">
-            <div class="form-group">
-                <label for="customer-card">Cliente:</label>
-                <input type="text" id="customer-card" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="card-number">Número do cartão:</label>
-                <input type="text" id="card-number" class="form-control" required>
-            </div>
-            <button type="submit" class="btn-filled">Atribuir cartão</button>
         </form>
     </div>
     <h3>Painel do operador</h3>
@@ -96,6 +88,5 @@
         <button class="btn" (click)="openRegisterSaleModal()" id="btn-register-sale">Registar uma venda</button>
         <button class="btn" (click)="openRedeemPrizeModal()" id="btn-redeem-prize">Resgatar prémio</button>
         <button class="btn" (click)="openRegisterStockEntryModal()" id="btn-register-stock-entry">Registar entrada no stock</button>
-        <button class="btn" (click)="openAssignCardModal()" id="btn-assign-card">Atribuir cartão a um cliente</button>
     </div>
 </section>

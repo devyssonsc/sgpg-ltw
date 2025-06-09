@@ -1,38 +1,43 @@
 <app-header></app-header>
+<app-logout></app-logout>
 <section>
     <div id="overlay" (click)="closeModal()"></div>
     <div class="modal-add-user">
-        <form>
-            <div class="choose-user-type">
-                <input type="radio" name="userType" id="radioCliente" (change)="toggleEmployeeView()" checked>
-                <label for="radioCliente">Cliente</label>
-                <input type="radio" name="userType" id="radioFuncionario" (change)="toggleEmployeeView()">
-                <label for="radioFuncionario">Funcionário</label>
-            </div>
-            @if(isEmployee){
-                <div class="form-group">
-                    <label for="selectRole">Cargo:</label>
-                    <select name="role" id="selectRole">
-                        <option value="operador">Operador</option>
-                        <option value="func-serv">Funcionário de serviço</option>
-                    </select>
-                </div>
-            }
+        <form [formGroup]="userRegisterForm">
             <div class="form-group">
                 <label for="inName">Nome:</label>
-                <input type="text" class="form-control" id="inName">
+                <input type="text" class="form-control" formControlName="inputName" id="inName">
             </div>
             <div class="form-group">
-                <label for="inLogin">Login:</label>
-                <input type="text" class="form-control" id="inLogin">
+                <label for="inEmail">Email:</label>
+                <input type="email" class="form-control" formControlName="inputEmail" id="inEmail">
+            </div>
+            <div class="form-group">
+                <label for="inUsername">Username:</label>
+                <input type="text" class="form-control" formControlName="inputUsername" id="inUsername">
             </div>
             <div class="form-group">
                 <label for="inPassword">Password:</label>
-                <input type="text" class="form-control" id="inPassword">
+                <input type="password" class="form-control" formControlName="inputPassword" id="inPassword">
             </div>
+            @if(userRegisterForm.get('inputPassword')?.touched && userRegisterForm.get('inputPassword')?.errors) {
+                @if(userRegisterForm.get('inputPassword')?.errors?.['required']) {
+                    <span style="color: red;">*Senha é obrigatória. <br></span>
+                }
+                @if(userRegisterForm.get('inputPassword')?.errors?.['minlength']){
+                    <span style="color: red;">*Senha deve ter pelo menos 8 caracteres. <br></span>
+                }
+                @if(userRegisterForm.get('inputPassword')?.errors?.['pattern']){
+                    <span style="color: red;">*Senha deve conter letras maiúsculas,minúsculas, números e caracteres especiais. <br></span>
+                }
+            }
             <div class="form-group">
-                <label for="inConfirmPassword">Confirm Password:</label>
-                <input type="text" class="form-control" id="inConfirmPassword">
+                <label for="inRole">Role:</label>
+                <select name="role" id="inRole" class="form-control" formControlName="inputRole">
+                    @for(role of roles; track role){
+                    <option [value]="role">{{role}}</option>
+                    }
+                </select>
             </div>
             <button class="btn btn-success" (click)="registerUser()">Registar Utilizador</button>
         </form>
@@ -51,24 +56,14 @@
             </tr>
         </thead>
         <tbody>
+            @for(cliente of clientes; track cliente){
             <tr>
-                <td>Maria da Silva</td>
-                <td>123456</td>
-                <td>350</td>
+                <td>{{cliente.name}}</td>
+                <td>{{cliente.idCartao}}</td>
+                <td>{{cliente.pontos}}</td>
                 <td><i class="bi bi-pencil-fill"></i></td>
             </tr>
-            <tr>
-                <td>João Pereira</td>
-                <td>789012</td>
-                <td>420</td>
-                <td><i class="bi bi-pencil-fill"></i></td>
-            </tr>
-            <tr>
-                <td>João Pereira</td>
-                <td>789012</td>
-                <td>420</td>
-                <td><i class="bi bi-pencil-fill"></i></td>
-            </tr>
+            }
         </tbody>
     </table>
     <table class="tabela-funcionarios">
@@ -80,36 +75,23 @@
             </tr>
         </thead>
         <tbody>
+            @for (funcionario of funcionarios; track funcionario) {
             <tr>
-                <td>Maria da Silva</td>
+                <td>{{funcionario.name}}</td>
                 <td>
                     <select name="" id="">
-                        <option value="operador">Operador</option>
-                        <option value="func-serv">Funcionário de serviço</option>
+                        @for(role of roles; track role){
+                        @if(funcionario.role === role){
+                        <option [value]="role" selected>{{role}}</option>
+                        } @else {
+                        <option [value]="role">{{role}}</option>
+                        }
+                        }
                     </select>
                 </td>
                 <td><i class="bi bi-pencil-fill"></i></td>
             </tr>
-            <tr>
-                <td>João Pereira</td>
-                <td>
-                    <select name="" id="">
-                        <option value="operador">Operador</option>
-                        <option value="func-serv">Funcionário de serviço</option>
-                    </select>
-                </td>
-                <td><i class="bi bi-pencil-fill"></i></td>
-            </tr>
-            <tr>
-                <td>João Pereira</td>
-                <td>
-                    <select name="" id="">
-                        <option value="operador">Operador</option>
-                        <option value="func-serv">Funcionário de serviço</option>
-                    </select>
-                </td>
-                <td><i class="bi bi-pencil-fill"></i></td>
-            </tr>
+            }
         </tbody>
     </table>
 </section>

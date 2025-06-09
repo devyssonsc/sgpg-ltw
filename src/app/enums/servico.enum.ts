@@ -1,0 +1,6 @@
+export enum Servico {
+    TROCA_OLEO = 'TROCA_OLEO',
+    REVISAO = 'REVISAO',
+    ALINHAMENTO = 'ALINHAMENTO',
+    LAVAGEM = 'LAVAGEM'
+}

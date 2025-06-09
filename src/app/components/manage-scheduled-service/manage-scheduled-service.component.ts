@@ -1,4 +1,5 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -8,12 +9,29 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './manage-scheduled-service.component.html',
   styleUrl: './manage-scheduled-service.component.scss'
 })
-export class ManageScheduledServiceComponent {
+export class ManageScheduledServiceComponent implements OnInit {
+
+  agendamentos: any[] = [];
+
+  apiUrl = 'http://localhost:8080/api'; // Adjust the API URL as needed
 
   constructor(
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private httpClient: HttpClient
   ) { }
+
+  ngOnInit() {
+    this.httpClient.get(`${this.apiUrl}/agendamentos/futuros`).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.agendamentos = response;
+      },
+      (error) => {
+        console.error('Error fetch:', error);
+      }
+    )
+  }
 
   assignEmployee() {
     alert('Employee assigned to the scheduled service successfully!');

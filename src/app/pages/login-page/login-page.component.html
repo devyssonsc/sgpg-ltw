@@ -3,11 +3,11 @@
     <div id="overlay"></div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
         <div class="form-group">
-            <label for="login">Login:</label>
-            <input type="text" id="login" formControlName="inputLogin" class="form-control" required>
-            @if(loginForm.get('inputLogin')?.invalid && loginForm.get('inputLogin')?.touched){
+            <label for="username">Username:</label>
+            <input type="text" id="username" formControlName="inputUsername" class="form-control" required>
+            @if(loginForm.get('inputUsername')?.invalid && loginForm.get('inputUsername')?.touched){
                 <small>
-                    Login is required.
+                    Username is required.
                 </small>
             }
         </div>
@@ -20,6 +20,6 @@
                 </small>
             }
         </div>
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
 </section>

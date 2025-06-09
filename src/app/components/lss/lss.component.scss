@@ -1,0 +1,111 @@
+$turquoise: #36d1c4;
+$light-gray: #f8f9fa;
+$dark-gray: #4a4a4a;
+$button-hover: darken($turquoise, 10%);
+
+.p-4 {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: $dark-gray;
+
+    h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $dark-gray;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid $turquoise;
+        border-radius: 8px;
+        resize: vertical;
+        font-family: monospace;
+        margin-bottom: 1rem;
+
+        &:focus {
+            outline: none;
+            border-color: $button-hover;
+            box-shadow: 0 0 0 2px rgba($turquoise, 0.2);
+        }
+    }
+
+    .flex {
+        display: flex;
+        gap: 1rem;
+
+        button {
+            padding: 0.5rem 1.25rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &.bg-blue-600 {
+                background-color: $turquoise;
+                color: white;
+
+                &:hover {
+                    background-color: $button-hover;
+                }
+            }
+
+            &.bg-gray-400 {
+                background-color: #ccc;
+                color: white;
+
+                &:hover {
+                    background-color: darken(#ccc, 10%);
+                }
+            }
+        }
+    }
+
+    .mt-4 {
+        margin-top: 1.5rem;
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        pre {
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: monospace;
+
+            &.bg-green-100 {
+                background-color: #d1fae5;
+            }
+
+            &.bg-blue-100 {
+                background-color: #dbeafe;
+            }
+
+            &.bg-yellow-100 {
+                background-color: #fef9c3;
+            }
+
+            &.bg-gray-100 {
+                background-color: #f3f4f6;
+            }
+        }
+    }
+
+    .text-red-600 {
+        color: #dc2626;
+        margin-top: 1rem;
+
+        strong {
+            font-weight: bold;
+        }
+    }
+}

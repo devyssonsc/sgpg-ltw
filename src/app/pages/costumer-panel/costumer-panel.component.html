@@ -1,19 +1,30 @@
 <app-header></app-header>
+<app-logout></app-logout>
 <section>
     <div id="overlay" (click)="closeScheduleServiceModal()"></div>
     <div class="modal-schedule-service">
-        <form (ngSubmit)="scheduleService()">
-            <select>
-                <option value="">Selecione uma opção</option>
-                <option value="opcao1">Opção 1</option>
-                <option value="opcao2">Opção 2</option>
-            </select>
+        <form [formGroup]="scheduleServiceForm" (ngSubmit)="scheduleService()">
+            <div class="form-group">
+                <label for="servico"></label>
+                <select formControlName="inputServico" id="servico" class="form-control">
+                    <option value="" disabled selected>Selecione o serviço</option>
+                    @for(servico of servicos; track servico) {
+                        <option [value]="servico">{{ servico }}</option>
+                    }
+                </select>
+            </div>
 
-            <input type="date" />
+            <div class="form-group">
+                <label for="inDate">Data:</label>
+                <input type="date" class="form-control" id="inDate" formControlName="inputDate"/>
+            </div>
 
-            <input type="time" />
+            <div class="form-group">
+                <label for="inTime">Time:</label>
+                <input type="time" class="form-control" id="inTime" formControlName="inputTime"/>
+            </div>
 
-            <button type="submit">Agendar Serviço</button>
+            <button class="btn-filled" type="submit">Agendar Serviço</button>
         </form>
     </div>
     <h3>Olá, Divaldo Dias</h3>
@@ -24,34 +35,26 @@
         <thead>
             <tr>
                 <th>Serviços agendados</th>
-                <th></th>
-                <th></th>
+                <th>Cliente</th>
+                <th>Data</th>
                 <th>Funcionário</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Divaldo Dias</td>
-                <td>2023-10-01</td>
-                <td>10:00</td>
-                <td>Alykhan Jamal</td>
-                <button class="btn btn-info">Não Iniciado</button>
-            </tr>
-            <tr>
-                <td>Divaldo Dias</td>
-                <td>2023-10-02</td>
-                <td>11:00</td>
-                <td>Alykhan Jamal</td>
-                <button class="btn btn-success">Em execução</button>
-            </tr>
-            <tr>
-                <td>Divaldo Dias</td>
-                <td>2023-10-03</td>
-                <td>12:00</td>
-                <td>Alykhan Jamal</td>
-                <button class="btn btn-danger">Finalizado</button>
-            </tr>
+            @for(agendamento of agendamentos; track agendamento){
+                <tr>
+                    <td>{{ agendamento.tipoServico }}</td>
+                    <td>{{ agendamento.cliente.name }}</td>
+                    <td>{{ agendamento.dataPrevista }}</td>
+                    <td>{{ agendamento.funcionarioServico || "null" }}</td>
+                    <td>
+                        <button class="btn" [class]="agendamento.status === 'Não Iniciado' ? 'btn-info' : (agendamento.status === 'Em execução' ? 'btn-success' : 'btn-danger')">
+                            {{ agendamento.status }}
+                        </button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
     <table class="tabela-movimentos-cartao">

@@ -69,27 +69,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Divaldo Dias</td>
-                <td>
-                    <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
-                    <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Divaldo Dias</td>
-                <td>
-                    <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
-                    <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Divaldo Dias</td>
-                <td>
-                    <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
-                    <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
-                </td>
-            </tr>
+            @for(agendamento of agendamentos; track agendamento) {
+                <tr>
+                    <td>Divaldo Dias</td>
+                    <td>
+                        <button class="btn-filled" (click)="openRegisterMaterialsModal()">Registar materiais</button>
+                        <button class="btn-filled" (click)="openAssignEmployeeModal()">Atribuir funcionário</button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

@@ -2,32 +2,32 @@
     <div id="overlay" (click)="closeAddPrizesModal()"></div>
     <div class="modal-add-prizes">
         <h4>Adicionar Prémio</h4>
-        <form class="form-add-prize" (ngSubmit)="addPrize()">
+        <form [formGroup]="addPrizeForm" class="form-add-prize" (ngSubmit)="addPrize()">
             <div class="input-container">
                 <div class="form-group">
                     <label for="nomePremio">Nome do prémio:</label>
-                    <input type="text" id="nomePremio" class="form-control"/>
+                    <input type="text" id="nomePremio" class="form-control" formControlName="inputName"/>
                 </div>
                 <div class="form-group">
                     <label for="pontosPremio">Pontos necessários:</label>
-                    <input type="number" id="pontosPremio" class="form-control"/>
+                    <input type="number" id="pontosPremio" class="form-control" formControlName="inputPoints"/>
                 </div>
             </div>
-            <button type="submit" class="btn-filled">Registar materiais</button>
+            <button type="submit" class="btn-filled">Adicionar Prémio</button>
         </form>
     </div>
 
-    <div class="programa-container">
+    <form [formGroup]="loyaltyProgramForm" class="form-program" (ngSubmit)="createLoyaltyProgram()">
         <div class="form-group">
             <label for="nomePrograma">Nome do programa:</label>
-            <input type="text" id="nomePrograma" />
+            <input type="text" id="nomePrograma" formControlName="inputNameProgram"/>
         </div>
         <div class="form-group">
             <label for="pontosPorEuro">Pontos por euro gasto:</label>
-            <input type="number" id="pontosPorEuro" />
+            <input type="number" id="pontosPorEuro" formControlName="inputPointsProgram"/>
         </div>
         <button class="btn btn-filled" id="btn-create-loyalty-program">Criar programa<br>de fidelidade</button>
-    </div>
+    </form>
 
     <table class="tabela-premios">
         <thead>
@@ -37,18 +37,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Air Fryer</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>4× Pneu</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <td>Troca de óleo</td>
-                <td>6</td>
-            </tr>
+            @for(prize of prizes; track prize){
+                <tr>
+                    <td>{{ prize.name }}</td>
+                    <td>{{ prize.pointsNeeded }}</td>
+                </tr>
+            }
         </tbody>
     </table>
 

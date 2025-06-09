@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Executar Script LSS</h2>
+
+    <!-- <label class="block mb-2">Escolher exemplo:</label>
+    <select (change)="carregarExemplo($event)" class="mb-4 p-2 border rounded">
+        <option value="">-- Selecionar --</option>
+        <option *ngFor="let ex of exemplos" [value]="ex.codigo">{{ ex.nome }}</option>
+    </select> -->
+
+    <textarea [(ngModel)]="lssCode" rows="10" class="w-full p-2 border rounded mb-4"
+        placeholder="Escreva aqui o script LSS..."></textarea>
+
+    <div class="flex gap-4">
+        <button (click)="executarLSS()" class="bg-blue-600 text-white px-4 py-2 rounded">Executar</button>
+        <button (click)="limparTudo()" class="bg-gray-400 text-white px-4 py-2 rounded">Limpar</button>
+    </div>
+
+    <div *ngIf="output.length > 0" class="mt-4">
+        <h3 class="text-lg font-medium mb-2">Resultado:</h3>
+        <pre *ngFor="let linha of output"
+            [ngClass]="{'bg-green-100': linha.startsWith('[assign]') || linha.startsWith('[def]'), 'bg-blue-100': linha.startsWith('---'), 'bg-yellow-100': linha.startsWith('[call]'), 'bg-gray-100': true}"
+            class="p-2 rounded mb-1">{{ linha }}</pre>
+    </div>
+
+    <div *ngIf="error" class="text-red-600 mt-4">
+        <strong>Erro:</strong> {{ error }}
+    </div>
+</div>
