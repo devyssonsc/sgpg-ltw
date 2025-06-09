@@ -49,6 +49,8 @@ export class LoginPageComponent {
           this.router.navigate(['/admin-panel']);
         } else if(response['role'] === 'FUNC_ADMIN') {
           this.router.navigate(['/func-admin-panel']);
+        } else if(response['role'] === 'FUNC_SERVICOS') {
+          this.router.navigate(['/lss']);
         } else if(response['role'] === 'CLIENTE') {
           this.router.navigate(['/costumer-panel']);
         } else if(response['role'] === 'OPERADOR') {

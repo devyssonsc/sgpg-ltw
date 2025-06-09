@@ -19,7 +19,7 @@ export class FuncServPanelComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialization logic can go here
-    if (localStorage.getItem('role') !== Role.CLIENTE) {
+    if (localStorage.getItem('role') !== Role.FUNC_SERVICOS) {
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('role');
